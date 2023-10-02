@@ -12,7 +12,7 @@ public interface UsuarioService {
 
     void borrarUsuario(Long id);
 
-    Usuario actualizarUsuario(Long id, Usuario usuarioActualizado);
+    Usuario actualizarUsuarioPorId(Long id, Usuario usuarioActualizado);
 
     Usuario obtenerUsuarioPorId(Long id);
 }

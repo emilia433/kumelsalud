@@ -31,12 +31,17 @@ public class Perfil {
 
     private String AntecedentePerfil;
 
-    @OneToOne
+
+    /*@OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL)
+    private List<Usuario> usuario;*/
+
+    @ManyToOne
+    @JoinColumn (name = "usuario_id")
     private Usuario usuario;
-
-
 
     @OneToMany(mappedBy = "perfil")
     private List<Controles> controles;
+
+
 
 }

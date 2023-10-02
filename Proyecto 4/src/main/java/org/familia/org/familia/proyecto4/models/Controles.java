@@ -33,14 +33,14 @@ public class Controles {
     private String observaciones;
     //provenientes del medico
 
-    /*
-    @Lob
-    private byte[] imagen;
-     */
-
     private String notas;
     //notas personalizadas de quien recibe la info
 
+
+     /*
+    @Lob
+    private byte[] imagen;
+     */
 
   @ManyToOne
     @JoinColumn(name = "perfil_id")

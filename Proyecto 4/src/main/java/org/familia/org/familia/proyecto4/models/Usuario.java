@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -39,6 +40,13 @@ public class Usuario {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRegistro;
+
+    /*@ManyToOne
+    @JoinColumn (name = "perfil_Id")
+    private Perfil perfil;*/
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Perfil> perfil;
 
 
 }
