@@ -33,7 +33,7 @@ public class Usuario {
     private String correoElectronico;
 
     @NotNull
-    private Character contrasena;
+    private String contrasena;
 
     private String textoAdicional;
 

@@ -11,11 +11,9 @@ public interface ControlesService {
 
     Controles crearControl(Controles nuevoControl);
 
-    
     Controles actualizarControlporId(Long id, Controles controlActualizado);
-    
 
     void borrarControl(Long id);
 
-    boolean editarControlPorId(Long id);
+    Controles obtenerControlPorId(Long id);
 }

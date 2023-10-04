@@ -10,34 +10,44 @@ import java.util.List;
 
 @Service
 @Transactional
-public abstract class ControlesServiceImpl implements ControlesService {
+
+public class ControlesServiceImpl implements ControlesService {
 
     @Autowired
-    ControlesRepository controlesRepository;
+    public ControlesRepository controlesRepository;
 
     @Override
     public List<Controles> listaDeControles() {
         return controlesRepository.findAll();
     }
+
     @Override
     public Controles crearControl(Controles controles) {
         return controlesRepository.save(controles);
     }
 
-    @Override
-    public void borrarControl(Long id) {
-        controlesRepository.deleteById(id);
-    }
-
 
     @Override
-    public Controles actualizarControlporId(Long id, Controles controlesActualizado){return controlesActualizado;}
-
-    /*
-    @Override
-    public Controles actualizarControlPorId(Long id, Controles controlActualizado) {
+    public Controles obtenerControlPorId(Long id) {
         Boolean existe = controlesRepository.existsById(id);
 
+        if (existe) {
+            Controles controlEscogido = controlesRepository.findById(id).get();
+            return controlEscogido;
+        } else {
+            System.out.println("El id es inválido o no existe");
+            return null;
+        }
+    }
+
+    @Override
+        public void borrarControl(Long id){
+            controlesRepository.deleteById(id);
+        }
+
+    @Override
+    public Controles actualizarControlporId(Long id, Controles controlActualizado) {
+        Boolean existe = controlesRepository.existsById(id);
         if (existe) {
             Controles controlSeleccionado = controlesRepository.findById(id).get();
             controlSeleccionado.setFechaControl(controlActualizado.getFechaControl());
@@ -46,23 +56,17 @@ public abstract class ControlesServiceImpl implements ControlesService {
             controlSeleccionado.setDiagnostico(controlActualizado.getDiagnostico());
             controlSeleccionado.setObservaciones(controlActualizado.getObservaciones());
             controlSeleccionado.setNotas(controlActualizado.getNotas());
-            System.out.println("El control ha sido actualizado");
-            return controlesRepository.save(controlSeleccionado); // Debes guardar y devolver el control actualizado
+
+            System.out.println("El control ha sido actualizada");
+            return controlesRepository.save(controlSeleccionado);
         } else {
-                System.out.println("El control no existe o el id es inválido");
-                return null;
+            System.out.println("El control no existe o el id es inválido");
+            return null;
         }
     }
 
 
-     */
-
-
-
 }
-  /*@Override
-        public boolean obtenerControlPorId (Long id){
-            return false;
-        }*/
+
 
 
