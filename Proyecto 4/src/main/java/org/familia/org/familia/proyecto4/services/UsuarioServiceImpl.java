@@ -15,34 +15,35 @@ import java.util.List;
 public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
-    UsuarioRepository UsuarioRepository;
+    UsuarioRepository usuarioRepository;
+
 
     @Override
     public List<Usuario> listaDeUsuarios() {
-        return UsuarioRepository.findAll();
+        return usuarioRepository.findAll();
     }
 
     @Override
     public Usuario crearUsuario(Usuario nuevoUsuario){
-        return UsuarioRepository.save(nuevoUsuario);
+        return usuarioRepository.save(nuevoUsuario);
     }
 
     @Override
     public void borrarUsuario(Long id) {
-        UsuarioRepository.deleteById(id);
+        usuarioRepository.deleteById(id);
     }
 
     @Override
     public Usuario actualizarUsuarioPorId(Long id, Usuario usuarioActualizado) {
-        Boolean existe = UsuarioRepository.existsById(id);
+        Boolean existe = usuarioRepository.existsById(id);
         if (existe){
-            Usuario usuarioSeleccionado = UsuarioRepository.findById(id).get();
+            Usuario usuarioSeleccionado = usuarioRepository.findById(id).get();
             usuarioSeleccionado.setUsuarioNombre(usuarioActualizado.getUsuarioNombre());
             usuarioSeleccionado.setCorreoElectronico(usuarioActualizado.getCorreoElectronico());
             usuarioSeleccionado.setContrasena(usuarioActualizado.getContrasena());
             usuarioSeleccionado.setTextoAdicional(usuarioActualizado.getTextoAdicional());
             System.out.println("El Usuario se ha actualizado");
-            return UsuarioRepository.save(usuarioSeleccionado);
+            return usuarioRepository.save(usuarioSeleccionado);
         }else {
             System.out.println("El Usuario no existe");
             return null;
@@ -50,10 +51,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     public Usuario obtenerUsuarioPorId(Long id) {
-        Boolean existe = UsuarioRepository.existsById(id);
+        Boolean existe = usuarioRepository.existsById(id);
 
         if(existe){
-            Usuario usuarioEscogido = UsuarioRepository.findById(id).get();
+            Usuario usuarioEscogido = usuarioRepository.findById(id).get();
             return usuarioEscogido;
         }else{
             System.out.println("El id es inválido o no existe");

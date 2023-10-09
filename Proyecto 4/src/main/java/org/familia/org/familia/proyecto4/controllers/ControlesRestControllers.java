@@ -17,10 +17,10 @@ public class ControlesRestControllers {
     @Autowired
     ControlesServiceImpl controlesService;
 
-    @GetMapping("/listaControles")
+    @GetMapping("/lista")
     public List<Controles> listaDeControles() {
-        List<Controles> mostrarListaUsuario = controlesService.listaDeControles();
-        return mostrarListaUsuario;
+        List<Controles> mostrarListaControles = controlesService.listaDeControles();
+        return mostrarListaControles;
     }
 
     @PostMapping("/nuevo")
@@ -30,9 +30,9 @@ public class ControlesRestControllers {
     }
 
     @DeleteMapping("/{id}")
-    public String borrarControl(@PathVariable Long id) {
+    public String borrarControl(@RequestParam Long id) {
         controlesService.borrarControl(id);
-        return "El Control borrado";
+        return "El control ha sido borrado";
     }
 
     @PutMapping("/editar/{id}")

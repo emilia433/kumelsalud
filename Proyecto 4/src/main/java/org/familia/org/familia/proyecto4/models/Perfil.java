@@ -1,5 +1,7 @@
 package org.familia.org.familia.proyecto4.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,20 +23,22 @@ public class Perfil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long PerfilId;
+    private Long perfilId;
 
 
-    @NotNull
+
     private String nombrePerfil;
+
 
     private Integer edadPerfil;
 
-    private String AntecedentePerfil;
+
+    private String antecedentePerfil;
 
 
     /*@OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL)
     private List<Usuario> usuario;*/
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn (name = "usuario_id")
     private Usuario usuario;

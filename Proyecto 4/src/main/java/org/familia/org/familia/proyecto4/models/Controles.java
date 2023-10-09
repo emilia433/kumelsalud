@@ -1,6 +1,8 @@
 package org.familia.org.familia.proyecto4.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,15 +13,16 @@ import java.util.Date;
 
 
 @Entity
+@Table(name = "controles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "controles")
+
 public class Controles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fichaId;
+    private Long controlesId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaControl;
@@ -27,7 +30,7 @@ public class Controles {
     private String especialidad;
 
     private String medico;
-    
+
     private String diagnostico;
 
     private String observaciones;
@@ -42,6 +45,7 @@ public class Controles {
     private byte[] imagen;
      */
 
+  @JsonIgnore
   @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;

@@ -18,7 +18,7 @@ public class PerfilRestControllers {
     @GetMapping("/lista")
     public List<Perfil> listaPerfil() {
         List<Perfil> listaMostrar = perfilService.listaDePerfiles();
-        return listaPerfil();
+        return perfilService.listaDePerfiles();
     }
 
     @PostMapping("/nuevo")

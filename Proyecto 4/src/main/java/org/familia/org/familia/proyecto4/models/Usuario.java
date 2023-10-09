@@ -26,18 +26,19 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuarioId;
 
-    @NotNull
+
     private String usuarioNombre;
 
-    @NotNull
+
     private String correoElectronico;
 
-    @NotNull
+
     private String contrasena;
+
 
     private String textoAdicional;
 
-    @NotNull
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRegistro;
 
@@ -47,6 +48,5 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Perfil> perfil;
-
 
 }

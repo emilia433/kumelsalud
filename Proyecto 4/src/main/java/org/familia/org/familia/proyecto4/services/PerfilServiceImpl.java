@@ -3,7 +3,9 @@ package org.familia.org.familia.proyecto4.services;
 import jakarta.transaction.Transactional;
 import org.familia.org.familia.proyecto4.models.Ficha;
 import org.familia.org.familia.proyecto4.models.Perfil;
+import org.familia.org.familia.proyecto4.repositories.ControlesRepository;
 import org.familia.org.familia.proyecto4.repositories.PerfilRepository;
+import org.familia.org.familia.proyecto4.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class PerfilServiceImpl implements PerfilService{
 
     @Autowired
     PerfilRepository perfilRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
 
     @Override
