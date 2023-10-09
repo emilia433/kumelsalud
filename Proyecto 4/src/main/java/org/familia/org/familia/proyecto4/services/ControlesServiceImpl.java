@@ -17,8 +17,8 @@ public class ControlesServiceImpl implements ControlesService {
     @Autowired
     public ControlesRepository controlesRepository;
 
-    /*@Autowired
-    public PerfilRepository perfilRepository;*/
+    @Autowired
+    public PerfilRepository perfilRepository;
 
     @Override
     public List<Controles> listaDeControles() {
