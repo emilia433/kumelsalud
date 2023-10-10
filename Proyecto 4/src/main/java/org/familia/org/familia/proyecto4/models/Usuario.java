@@ -42,11 +42,11 @@ public class Usuario {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRegistro;
 
-    /*@ManyToOne
-    @JoinColumn (name = "perfil_Id")
-    private Perfil perfil;*/
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Perfil> perfil;
+
+
+
 
 }

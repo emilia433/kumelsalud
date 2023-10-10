@@ -24,8 +24,8 @@ public class ControlesRestControllers {
     }
 
     @PostMapping("/nuevo")
-    public Controles crearControl(@RequestBody Controles nuevoControl){
-        Controles controlParaGuardar= controlesService.crearControl(nuevoControl);
+    public Controles crearControl(@RequestBody Controles nuevoControl, @RequestParam Long perfilid){
+        Controles controlParaGuardar= controlesService.crearControl(nuevoControl, perfilid);
         return controlParaGuardar;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface PerfilService {
     List<Perfil> listaDePerfiles();
 
-    Perfil crearPerfil(Perfil nuevoPerfil);
+    Perfil crearPerfil(Perfil nuevoPerfil, Long id);
 
     void borrarPerfil(Long id);
 

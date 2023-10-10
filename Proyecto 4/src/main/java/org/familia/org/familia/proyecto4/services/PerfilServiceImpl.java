@@ -3,6 +3,7 @@ package org.familia.org.familia.proyecto4.services;
 import jakarta.transaction.Transactional;
 import org.familia.org.familia.proyecto4.models.Ficha;
 import org.familia.org.familia.proyecto4.models.Perfil;
+import org.familia.org.familia.proyecto4.models.Usuario;
 import org.familia.org.familia.proyecto4.repositories.ControlesRepository;
 import org.familia.org.familia.proyecto4.repositories.PerfilRepository;
 import org.familia.org.familia.proyecto4.repositories.UsuarioRepository;
@@ -28,8 +29,11 @@ public class PerfilServiceImpl implements PerfilService{
     }
 
     @Override
-    public Perfil crearPerfil(Perfil nuevoPerfil) {
+    public Perfil crearPerfil(Perfil nuevoPerfil, Long id) {
+        Usuario usuarioEscogido=usuarioRepository.findById(id).get();
+        nuevoPerfil.setUsuario(usuarioEscogido);
         return perfilRepository.save(nuevoPerfil);
+
     }
 
     @Override
@@ -56,9 +60,9 @@ public class PerfilServiceImpl implements PerfilService{
     @Override
     public Perfil obtenerPerfilPorId(Long id) {
         Boolean existe = perfilRepository.existsById(id);
-
+                System.out.println(existe);
         if(existe){
-            Perfil perfilEscogido = perfilRepository.findById(id).get();
+            Perfil perfilEscogido = perfilRepository.getById(id);
             return perfilEscogido;
         }else{
             System.out.println("El id es inválido o no existe");

@@ -1,7 +1,9 @@
 package org.familia.org.familia.proyecto4.models;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -17,8 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Perfil {
 
     @Id
@@ -36,16 +37,14 @@ public class Perfil {
     private String antecedentePerfil;
 
 
-    /*@OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL)
-    private List<Usuario> usuario;*/
+
     @JsonIgnore
     @ManyToOne
-    @JoinColumn (name = "usuario_id")
+    @JoinColumn (name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "perfil")
     private List<Controles> controles;
-
-
 
 }

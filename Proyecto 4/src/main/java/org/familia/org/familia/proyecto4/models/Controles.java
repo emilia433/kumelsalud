@@ -1,6 +1,9 @@
 package org.familia.org.familia.proyecto4.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -18,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Controles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +48,7 @@ public class Controles {
     private byte[] imagen;
      */
 
-  @JsonIgnore
+  @JsonBackReference
   @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;

@@ -22,8 +22,9 @@ public class PerfilRestControllers {
     }
 
     @PostMapping("/nuevo")
-    public Perfil crearPerfil(@RequestBody Perfil perfilNuevo) {
-        Perfil perfilParaGuardar = perfilService.crearPerfil(perfilNuevo);
+    public Perfil crearPerfil(@RequestBody Perfil perfilNuevo, @RequestParam Long usuarioid) {
+        Perfil perfilParaGuardar = perfilService.crearPerfil(perfilNuevo, usuarioid);
+        //System.out.println(perfilParaGuardar.getControles());
         return perfilParaGuardar;
     }
 
@@ -37,11 +38,12 @@ public class PerfilRestControllers {
     public Perfil actualizarPerfilPorId(@PathVariable Long id, @RequestBody Perfil perfilActualizado) {
         Perfil perfilEditado = perfilService.actualizarPerfilPorId(id, perfilActualizado);
         return perfilEditado;
-    }
+                }
 
-    @GetMapping("/{id}")
-    public Perfil obtenerPerfilPorId(@PathVariable Long id) {
+@GetMapping("/{id}")
+public Perfil obtenerPerfilPorId(@PathVariable Long id) {
         Perfil perfilMostrar = perfilService.obtenerPerfilPorId(id);
         return perfilMostrar;
-    }
+        }
+
 }

@@ -25,6 +25,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario crearUsuario(Usuario nuevoUsuario){
+        System.out.println(nuevoUsuario.getPerfil().size());
         return usuarioRepository.save(nuevoUsuario);
     }
 

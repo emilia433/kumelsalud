@@ -9,7 +9,8 @@ public interface ControlesService {
 
     List<Controles> listaDeControles();
 
-    Controles crearControl(Controles nuevoControl);
+    Controles crearControl(Controles nuevoControl, Long id);
+
 
     Controles actualizarControlporId(Long id, Controles controlActualizado);
 

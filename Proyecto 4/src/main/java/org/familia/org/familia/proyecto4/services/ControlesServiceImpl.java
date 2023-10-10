@@ -2,6 +2,8 @@ package org.familia.org.familia.proyecto4.services;
 
 import jakarta.transaction.Transactional;
 import org.familia.org.familia.proyecto4.models.Controles;
+import org.familia.org.familia.proyecto4.models.Perfil;
+import org.familia.org.familia.proyecto4.models.Usuario;
 import org.familia.org.familia.proyecto4.repositories.ControlesRepository;
 import org.familia.org.familia.proyecto4.repositories.PerfilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,10 @@ public class ControlesServiceImpl implements ControlesService {
     }
 
     @Override
-    public Controles crearControl(Controles controles) {
+    public Controles crearControl(Controles controles, Long id) {
+        Perfil perfilEscogido=perfilRepository.getById(id);
+        System.out.println(perfilEscogido.getNombrePerfil());
+        controles.setPerfil(perfilEscogido);
         return controlesRepository.save(controles);
     }
 
